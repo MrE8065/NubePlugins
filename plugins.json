@@ -1,9 +1,30 @@
 [
     {
+        "iconUrl": "http://www.google.com/s2/favicons?domain=www.animefenix.tv",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/MrE8065/NubePlugins",
+        "fileSize": 17638,
+        "status": 1,
+        "language": "es",
+        "authors": [
+            "MrE8065"
+        ],
+        "tvTypes": [
+            "AnimeMovie",
+            "Anime",
+            "OVA"
+        ],
+        "version": 1,
+        "internalName": "AnimeFenix",
+        "description": "Plugin para acceder a AnimeFenix",
+        "url": "https://raw.githubusercontent.com/MrE8065/NubePlugins/builds/AnimeFenix.cs3",
+        "name": "AnimeFenix"
+    },
+    {
         "iconUrl": "http://www.google.com/s2/favicons?domain=www3.animeflv.net",
         "apiVersion": 1,
         "repositoryUrl": "https://github.com/MrE8065/NubePlugins",
-        "fileSize": 16001,
+        "fileSize": 16008,
         "status": 1,
         "language": "es",
         "authors": [

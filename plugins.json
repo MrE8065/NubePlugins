@@ -2,7 +2,7 @@
     {
         "iconUrl": "http://www.google.com/s2/favicons?domain=www3.animeflv.net",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/user/repo",
+        "repositoryUrl": "https://github.com/MrE8065/NubePlugins",
         "fileSize": 16001,
         "status": 1,
         "language": "es",
@@ -17,7 +17,7 @@
         "version": 1,
         "internalName": "AnimeFLVProvider",
         "description": "Plugin para acceder a AnimeFLV",
-        "url": "https://raw.githubusercontent.com/user/repo/builds/AnimeFLVProvider.cs3",
+        "url": "https://raw.githubusercontent.com/MrE8065/NubePlugins/builds/AnimeFLVProvider.cs3",
         "name": "AnimeFLVProvider"
     }
 ]

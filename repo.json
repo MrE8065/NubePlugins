@@ -1,0 +1,6 @@
+{
+  "name": "NubePlugins",
+  "description": "Repositorio en castellano para Cloudstream",
+  "manifestVersion": 1,
+  "pluginLists": ["https://raw.githubusercontent.com/MrE8065/NubePlugins/master/plugins.json"]
+}

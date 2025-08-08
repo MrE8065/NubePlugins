@@ -1,6 +1,5 @@
 package com.mre8065
 
-import android.annotation.SuppressLint
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.lagradost.cloudstream3.*
 import com.lagradost.cloudstream3.utils.AppUtils.parseJson
@@ -16,6 +15,7 @@ class AnimeFLVProvider : MainAPI() {
             else TvType.Anime
         }
 
+        // En este caso, todos los resultados de animeflv están subtitulados, pero lo dejo así como ejemplo
         fun getDubStatus(title: String): DubStatus {
             return if (title.contains("Latino") || title.contains("Castellano"))
                 DubStatus.Dubbed
@@ -109,7 +109,6 @@ class AnimeFLVProvider : MainAPI() {
         }
     }
 
-    @SuppressLint("SuspiciousIndentation")
     override suspend fun load(url: String): LoadResponse {
         val doc = app.get(url).document
         val episodes = ArrayList<Episode>()

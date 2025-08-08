@@ -55,7 +55,9 @@ class AnimeFLVProvider : MainAPI() {
                     newAnimeSearchResponse(title, url, TvType.Anime, fixUrl(poster)) {
                         addDubStatus(getDubStatus(title), epNum)
                     }
-                })
+                },
+                false
+            )
         )
         for ((url, name) in urls) {
             try {
@@ -72,8 +74,7 @@ class AnimeFLVProvider : MainAPI() {
                         addDubStatus(getDubStatus(title))
                     }
                 }
-
-                items.add(HomePageList(name, home))
+                items.add(HomePageList(name, home, false))
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -100,10 +101,8 @@ class AnimeFLVProvider : MainAPI() {
             val title = searchr.title
             val href = "$mainUrl/anime/${searchr.slug}"
             val image = "$mainUrl/uploads/animes/covers/${searchr.id}.jpg"
-            newAnimeSearchResponse(title, href) {
+            newAnimeSearchResponse(title, href, TvType.Anime, fixUrl(image)) {
                 this.apiName = this@AnimeFLVProvider.name
-                this.type = TvType.Anime
-                this.posterUrl = fixUrl(image)
                 this.dubStatus = if (title.contains("Latino") || title.contains("Castellano"))
                     EnumSet.of(DubStatus.Dubbed)
                 else

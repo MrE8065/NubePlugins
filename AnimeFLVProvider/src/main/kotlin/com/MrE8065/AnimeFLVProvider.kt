@@ -139,7 +139,7 @@ class AnimeFLVProvider : MainAPI() {
                     val epthumb = "https://cdn.animeflv.net/screenshots/$animeid/$epNum/th_3.jpg"
                     val link = url.replace("/anime/", "/ver/") + "-$epNum"
                     episodes.add(
-                        Episode(
+                        newEpisode(
                             link,
                             null,
                             posterUrl = epthumb,

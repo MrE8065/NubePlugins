@@ -104,7 +104,6 @@ class AnimeFLVProvider : MainAPI() {
             val image = "$mainUrl/uploads/animes/covers/${searchr.id}.jpg"
             newAnimeSearchResponse(title, href, TvType.Anime) {
                 this.posterUrl = fixUrl(image)
-                this.apiName = this@AnimeFLVProvider.name
                 addDubStatus(getDubStatus(title))
             }
         }

@@ -100,17 +100,15 @@ class AnimeFLVProvider : MainAPI() {
             val title = searchr.title
             val href = "$mainUrl/anime/${searchr.slug}"
             val image = "$mainUrl/uploads/animes/covers/${searchr.id}.jpg"
-            AnimeSearchResponse(
-                title,
-                href,
-                this.name,
-                TvType.Anime,
-                fixUrl(image),
-                null,
-                if (title.contains("Latino") || title.contains("Castellano")) EnumSet.of(DubStatus.Dubbed) else EnumSet.of(
-                    DubStatus.Subbed
-                ),
-            )
+            newAnimeSearchResponse(title, href) {
+                this.apiName = this@AnimeFLVProvider.name
+                this.type = TvType.Anime
+                this.posterUrl = fixUrl(image)
+                this.dubStatus = if (title.contains("Latino") || title.contains("Castellano"))
+                    EnumSet.of(DubStatus.Dubbed)
+                else
+                    EnumSet.of(DubStatus.Subbed)
+            }
         }
     }
 
@@ -139,12 +137,10 @@ class AnimeFLVProvider : MainAPI() {
                     val epthumb = "https://cdn.animeflv.net/screenshots/$animeid/$epNum/th_3.jpg"
                     val link = url.replace("/anime/", "/ver/") + "-$epNum"
                     episodes.add(
-                        newEpisode(
-                            link,
-                            null,
-                            posterUrl = epthumb,
-                            episode = epNum.toIntOrNull()
-                        )
+                        newEpisode(link){
+                            this.posterUrl = epthumb
+                            this.episode = epNum.toIntOrNull()
+                        }
                     )
                 }
             }

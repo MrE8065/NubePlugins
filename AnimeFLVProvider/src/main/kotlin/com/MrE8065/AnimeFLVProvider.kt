@@ -52,7 +52,7 @@ class AnimeFLVProvider : MainAPI() {
                         ?.replace("ver/", "anime/") ?: return@mapNotNull null
                     val epNum =
                         it.selectFirst("span.Capi")?.text()?.replace("Episodio ", "")?.toIntOrNull()
-                    newAnimeSearchResponse(title, url, fixUrl(poster)) {
+                    newAnimeSearchResponse(title, url, TvType.Anime, fixUrl(poster)) {
                         addDubStatus(getDubStatus(title), epNum)
                     }
                 })
@@ -65,9 +65,10 @@ class AnimeFLVProvider : MainAPI() {
                     val poster = it.selectFirst("figure img")?.attr("src") ?: return@mapNotNull null
                     newAnimeSearchResponse(
                         title,
-                        fixUrl(it.selectFirst("a")?.attr("href") ?: return@mapNotNull null)
+                        fixUrl(it.selectFirst("a")?.attr("href") ?: return@mapNotNull null),
+                        TvType.Anime,
+                        fixUrl(poster)
                     ) {
-                        this.posterUrl = fixUrl(poster)
                         addDubStatus(getDubStatus(title))
                     }
                 }

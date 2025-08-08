@@ -53,7 +53,8 @@ class AnimeFLVProvider : MainAPI() {
                         ?.replace("ver/", "anime/") ?: return@mapNotNull null
                     val epNum =
                         it.selectFirst("span.Capi")?.text()?.replace("Episodio ", "")?.toIntOrNull()
-                    newAnimeSearchResponse(title, url, TvType.Anime, fixUrl(poster)) {
+                    newAnimeSearchResponse(title, url, TvType.Anime) {
+                        this.posterUrl = fixUrl(poster)
                         addDubStatus(getDubStatus(title), epNum)
                     }
                 })
@@ -67,9 +68,9 @@ class AnimeFLVProvider : MainAPI() {
                     newAnimeSearchResponse(
                         title,
                         fixUrl(it.selectFirst("a")?.attr("href") ?: return@mapNotNull null),
-                        TvType.Anime,
-                        fixUrl(poster)
+                        TvType.Anime
                     ) {
+                        this.posterUrl = fixUrl(poster)
                         addDubStatus(getDubStatus(title))
                     }
                 }
@@ -101,12 +102,14 @@ class AnimeFLVProvider : MainAPI() {
             val title = searchr.title
             val href = "$mainUrl/anime/${searchr.slug}"
             val image = "$mainUrl/uploads/animes/covers/${searchr.id}.jpg"
-            newAnimeSearchResponse(title, href, TvType.Anime, fixUrl(image)) {
+            newAnimeSearchResponse(title, href, TvType.Anime) {
+                this.posterUrl = fixUrl(image)
                 this.apiName = this@AnimeFLVProvider.name
-                this.dubStatus = if (title.contains("Latino") || title.contains("Castellano"))
-                    EnumSet.of(DubStatus.Dubbed)
+                val dubStatus = if (title.contains("Latino") || title.contains("Castellano"))
+                    DubStatus.Dubbed
                 else
-                    EnumSet.of(DubStatus.Subbed)
+                    DubStatus.Subbed
+                addDubStatus(dubStatus)
             }
         }
     }

@@ -1,27 +1,14 @@
-**⚠️ This is currently under development, dont use it yet if you're not comfortable with constantly merging new changes**
+# NubePlugins
 
-# `Cloudstream3 Plugin Repo Template`
+Repositorio de plugins en castellano para [Cloudstream](https://github.com/recloudstream/cloudstream)
 
-Template for a [Cloudstream3](https://github.com/recloudstream) plugin repo
+> [!NOTE]
+> Este repositorio es un fork de la [plantilla para plugins](https://github.com/recloudstream/TestPlugins) de cloudstream
 
-**⚠️ Make sure you check "Include all branches" when using this template**
+## Instalación
 
- 
-## Getting started with writing your first plugin
+Para instalar este repo, ve a `Configuración > Extensiones > Agregar repositorio` y pega este link:
 
-This template includes 1 example plugin.
-
-1. Open the root build.gradle.kts, read the comments and replace all the placeholders
-2. Familiarize yourself with the project structure. Most files are commented
-3. Build or deploy your first plugin using:
-   - Windows: `.\gradlew.bat ExampleProvider:make` or `.\gradlew.bat ExampleProvider:deployWithAdb`
-   - Linux & Mac: `./gradlew ExampleProvider:make` or `./gradlew ExampleProvider:deployWithAdb`
-
-## License
-
-Everything in this repo is released into the public domain. You may use it however you want with no conditions whatsoever
-
-## Attribution
-
-This template as well as the gradle plugin and the whole plugin system is **heavily** based on [Aliucord](https://github.com/Aliucord).
-*Go use it, it's a great mobile discord client mod!*
+```
+https://raw.githubusercontent.com/MrE8065/NubePlugins/master/repo.json
+```

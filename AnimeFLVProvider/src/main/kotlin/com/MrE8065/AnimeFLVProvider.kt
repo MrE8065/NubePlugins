@@ -105,11 +105,7 @@ class AnimeFLVProvider : MainAPI() {
             newAnimeSearchResponse(title, href, TvType.Anime) {
                 this.posterUrl = fixUrl(image)
                 this.apiName = this@AnimeFLVProvider.name
-                val dubStatus = if (title.contains("Latino") || title.contains("Castellano"))
-                    DubStatus.Dubbed
-                else
-                    DubStatus.Subbed
-                addDubStatus(dubStatus)
+                addDubStatus(getDubStatus(title))
             }
         }
     }
@@ -156,6 +152,15 @@ class AnimeFLVProvider : MainAPI() {
             plot = description
             tags = genre
         }
+    }
+
+    private fun fetchUrls(text: String): List<String> {
+        val urls = mutableListOf<String>()
+        val regex = Regex("(https?://[^\\s\"'<>]+)")
+        regex.findAll(text).forEach { match ->
+            urls.add(match.value)
+        }
+        return urls
     }
 
     override suspend fun loadLinks(

@@ -52,8 +52,7 @@ class AnimeFLVProvider : MainAPI() {
                         ?.replace("ver/", "anime/") ?: return@mapNotNull null
                     val epNum =
                         it.selectFirst("span.Capi")?.text()?.replace("Episodio ", "")?.toIntOrNull()
-                    newAnimeSearchResponse(title, url) {
-                        this.posterUrl = fixUrl(poster)
+                    newAnimeSearchResponse(title, url, fixUrl(poster)) {
                         addDubStatus(getDubStatus(title), epNum)
                     }
                 })

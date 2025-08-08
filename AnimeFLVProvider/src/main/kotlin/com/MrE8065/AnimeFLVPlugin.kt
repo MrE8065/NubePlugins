@@ -1,4 +1,4 @@
-package com.lagradost
+package com.mre8065
 
 import com.lagradost.cloudstream3.plugins.CloudstreamPlugin
 import com.lagradost.cloudstream3.plugins.Plugin

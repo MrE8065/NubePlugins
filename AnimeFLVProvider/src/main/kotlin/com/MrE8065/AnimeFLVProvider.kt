@@ -23,7 +23,7 @@ class AnimeFLVProvider : MainAPI() {
         }
     }
 
-    override var mainUrl = "https://www3.animeflv.net"
+    override var mainUrl = "https://www4.animeflv.net"
     override var name = "AnimeFLV (plugin)"
     override var lang = "es"
     override val hasMainPage = true
@@ -94,7 +94,7 @@ class AnimeFLVProvider : MainAPI() {
 
     override suspend fun search(query: String): List<SearchResponse> {
         val response = app.post(
-            "https://www3.animeflv.net/api/animes/search",
+            "$mainUrl/api/animes/search",
             data = mapOf(Pair("value", query))
         ).text
         val json = parseJson<List<SearchObject>>(response)

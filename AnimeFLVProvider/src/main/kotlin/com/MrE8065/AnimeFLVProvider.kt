@@ -81,7 +81,7 @@ class AnimeFLVProvider : MainAPI() {
             }
         }
         if (items.size <= 0) throw ErrorLoadingException()
-        return HomePageResponse(items)
+        return newHomePageResponse(items)
     }
 
     data class SearchObject(
@@ -167,7 +167,7 @@ class AnimeFLVProvider : MainAPI() {
         subtitleCallback: (SubtitleFile) -> Unit,
         callback: (ExtractorLink) -> Unit
     ): Boolean {
-        app.get(data).document.select("script").apmap { script ->
+        app.get(data).document.select("script").map { script ->
             if (script.data().contains("var videos = {") || script.data()
                     .contains("var anime_id =") || script.data().contains("server")
             ) {
@@ -175,7 +175,7 @@ class AnimeFLVProvider : MainAPI() {
                 fetchUrls(videos).map {
                     it.replace("https://embedsb.com/e/", "https://watchsb.com/e/")
                         .replace("https://ok.ru", "http://ok.ru")
-                }.apmap {
+                }.map {
                     loadExtractor(it, data, subtitleCallback, callback)
                 }
             }
